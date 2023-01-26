@@ -33,8 +33,10 @@ class Main {
             }
             
           }
+        } else if (commandMain.equals("Remove")){
+
         }
-        break;
+        
       }
 
 
