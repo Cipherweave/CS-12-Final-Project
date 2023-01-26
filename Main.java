@@ -6,23 +6,24 @@ class Main {
 
     ArrayList<Woods> woodsList = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
-    System.out.println("Hello world!");
     String item = "";
     int counterWood = 1;
 
 
 
-
     while (true){
+
+
+
       while (true){
-        System.out.println("What Item would you like to add?(Type Wood for Wood)");
-        String commandItem = scanner.nextLine();
-        if (commandItem.equals("Wood")){
-          item = commandItem;
-          break;
-        } else {
-          System.out.println("Invalid input. Please try again");
-        }
+          System.out.println("What Item would you like to add?(Type Wood for Wood)");
+          String commandItem = scanner.nextLine();
+          if (commandItem.equals("Wood")){
+            item = commandItem;
+            break;
+          } else {
+            System.out.println("Invalid input. Please try again");
+          }
       }
 
 
@@ -37,7 +38,7 @@ class Main {
         String woodWeight = scanner.nextLine();
         System.out.println("Enter Wood Space Occupied(Metre squared):");
         String woodSpaceOccupied = scanner.nextLine();
-        System.out.println("Enter Wood Value($):");
+        System.out.println("Enter Wood Value($ per Kg):");
         String woodValue = scanner.nextLine();
 
 
