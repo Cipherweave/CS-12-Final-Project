@@ -16,14 +16,25 @@ class Main {
 
 
       while (true){
-          System.out.println("What Item would you like to add?(Type Wood for Wood)");
-          String commandItem = scanner.nextLine();
-          if (commandItem.equals("Wood")){
-            item = commandItem;
-            break;
-          } else {
-            System.out.println("Invalid input. Please try again");
+
+        System.out.println("What would you like to do? (Add for adding Items),(Remove for removing items),(List for seeing the list of items)");
+        String commandMain = scanner.nextLine();
+
+
+        if (commandMain.equals("Add")); {
+          while (true){
+            System.out.println("What Item would you like to add?(Type Wood for Wood)");
+            String commandItem = scanner.nextLine();
+            if (commandItem.equals("Wood")){
+              item = commandItem;
+              break;
+            } else {
+              System.out.println("Invalid input. Please try again");
+            }
+            
           }
+        }
+        break;
       }
 
 
@@ -31,7 +42,7 @@ class Main {
   
       if (item.equals("Wood")) {
 
-
+        item = "";
         System.out.println("Enter Wood Type:");
         String woodType = scanner.nextLine();
         System.out.println("Enter Wood Weight(Kg):");
