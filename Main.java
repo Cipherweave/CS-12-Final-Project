@@ -1,12 +1,17 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 class Main {
   public static void main(String[] args) {
 
+    ArrayList<Woods> woodsList = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
     System.out.println("Hello world!");
     String item = "";
     int counterWood = 1;
+
+
+
 
     while (true){
       while (true){
@@ -19,14 +24,38 @@ class Main {
           System.out.println("Invalid input. Please try again");
         }
       }
+
+
+
   
       if (item.equals("Wood")) {
-        Woods wood = new Woods();
-        wood.setName("Wood " + counterWood);
-        System.out.println("A new Wood object named " + wood.getName() + " has been created.");
-        counterWood++;
-      }
 
+
+        System.out.println("Enter Wood Type:");
+        String woodType = scanner.nextLine();
+        System.out.println("Enter Wood Weight(Kg):");
+        String woodWeight = scanner.nextLine();
+        System.out.println("Enter Wood Space Occupied(Metre squared):");
+        String woodSpaceOccupied = scanner.nextLine();
+        System.out.println("Enter Wood Value($):");
+        String woodValue = scanner.nextLine();
+
+
+        Woods newWood = new Woods(woodType, woodWeight, woodSpaceOccupied, woodValue);
+        newWood.setName("Wood " + counterWood);
+        woodsList.add(newWood);
+        counterWood++;
+
+        System.out.println("Would you like to add another Wood? (yes/no)");
+        String userInput = scanner.nextLine();
+        if (!userInput.equalsIgnoreCase("yes")) {
+            break;
+        }
+      }
+      System.out.println("List of Woods:");
+      for (Woods wood : woodsList) {
+        System.out.println(wood.getName());
+      }
     } 
     
 
