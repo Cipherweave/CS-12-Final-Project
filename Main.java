@@ -19,7 +19,7 @@ class Main {
 
         System.out.println("What would you like to do? (Add for adding Items),(Remove for removing items),(List for seeing the list of items)");
         String commandMain = scanner.nextLine();
-
+        Methods.remove();
 
         if (commandMain.equals("Add")); {
           while (true){
@@ -33,7 +33,7 @@ class Main {
             }
             
           }
-        } else if (commandMain.equals("Remove")){
+          break;
 
         }
         
@@ -54,8 +54,9 @@ class Main {
         System.out.println("Enter Wood Value($ per Kg):");
         String woodValue = scanner.nextLine();
 
-
+        
         Woods newWood = new Woods(woodType, woodWeight, woodSpaceOccupied, woodValue);
+ 
         newWood.setName("Wood " + counterWood);
         woodsList.add(newWood);
         counterWood++;
@@ -75,3 +76,5 @@ class Main {
 
   }
 }
+
+
