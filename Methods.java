@@ -1,6 +1,8 @@
 import java.util.Scanner;
 import java.util.ArrayList;
-
+import java.util.Collections;
+import java.util.Collections;
+import  java.util.Comparator;
 
 
 public class Methods {
@@ -15,11 +17,11 @@ public class Methods {
             System.out.println("This is your Wood list.");
             int counter2 = 1;
             System.out.println("_____________________________________________________________________________");
-            System.out.println(String.format("| %4s | %-15s | %-10s | %-15s | %-15s|", "List", "Wood number code", "Wood Type", "Wood Weight (Kg)", "Wood Value($/Kg)"));
+            System.out.println(String.format("| %4s | %-15s | %-10s | %-15s | %-15s| %-15s|", "List", "Wood number code", "Wood Type", "Wood Weight (Kg)","Wood Space(M^2)", "Wood Value($/Kg)"));
             System.out.println("_____________________________________________________________________________");
             
             for (Woods wood : woodsList) {
-                System.out.println(String.format("| %4d | %-15s  | %-10s | %-15s  | %-15s |", counter2, wood.getName(), wood.WoodType, wood.WoodWeight, wood.WoodValue));
+                System.out.println(String.format("| %4d | %-15s  | %-10s | %-15s  | %-15s | %-15s|", counter2, wood.getName(), wood.WoodType,  wood.WoodWeight, wood.WoodSpaceOccupied , wood.WoodValue));
                 System.out.println("_____________________________________________________________________________");
                 counter2 += 1;
             }
@@ -122,12 +124,7 @@ public class Methods {
         if (woodsList.isEmpty()) {
             System.out.println("The list is empty");
         } else {
-            System.out.println("Sure this is your Wood list.");
-            int counter2 = 1;
-            for (Woods wood : woodsList) {
-                System.out.println(counter2 + ") " + wood.getName() );
-                counter2 += 1;
-            }
+
 
             while (true) {
                 System.out.println("Please selecet the number before the name to Remove Item. If you dont want to delete, Please Type Back ");
@@ -153,6 +150,52 @@ public class Methods {
     }
 
 
+    
+    public static void sort() {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true){
+            System.out.println("What criteria would you choose? (Weight)(Space)(Value)");
+            String criteria = scanner.nextLine();
+
+
+
+            if (criteria.equalsIgnoreCase("Weight")) {
+                woodsList.sort(new Comparator<Woods>() {
+                    @Override
+                    public int compare(Woods o1, Woods o2) {
+                        return Float.compare(o1.getWoodWeight(), o2.getWoodWeight());
+                    }
+                });
+                break;
+            }
+            else if (criteria.equalsIgnoreCase("Space")) {
+                woodsList.sort(new Comparator<Woods>() {
+                    @Override
+                    public int compare(Woods o1, Woods o2) {
+                        return Float.compare(o1.getWoodSpaceOccupied(), o2.getWoodSpaceOccupied());
+                    }
+                });
+                break;
+            } 
+            else if (criteria.equalsIgnoreCase("Value")) {
+                woodsList.sort(new Comparator<Woods>() {
+                    @Override
+                    public int compare(Woods o1, Woods o2) {
+                        return Float.compare(o1.getWoodValue(), o2.getWoodValue());
+                    }
+                });
+                break;
+            } 
+            else {
+                System.out.println("Invalid criteria");
+            }
+
+
+
+        }
+            
+    }
 
 }
         

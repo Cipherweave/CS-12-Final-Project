@@ -27,6 +27,8 @@ class Main {
           break;
         } else if (commandMain.equals("Remove")) {
           Methods.Remove();
+        } else if (commandMain.equals("Sort")) {
+          Methods.sort();
         }
         
       }

@@ -4,8 +4,6 @@ public class Woods {
     float WoodWeight = 0;
     float WoodSpaceOccupied = 0;
     float WoodValue = 0;
-
-
     public Woods(String type, float weight, float space, float value) {
         WoodType = type;
         WoodWeight = weight;
@@ -30,4 +28,15 @@ public class Woods {
     public void setWoodValue(float value) {
         this.WoodValue = value;
     }
+    public float getWoodWeight(){
+        return this.WoodWeight;
+    }
+    public float getWoodSpaceOccupied(){
+        return this.WoodSpaceOccupied;
+    }
+    public float getWoodValue(){
+        return this.WoodValue;
+    }
+
+  
 }
