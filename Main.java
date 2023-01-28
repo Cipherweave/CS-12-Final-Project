@@ -17,14 +17,16 @@ class Main {
 
       while (true){
 
+        Methods.ShowList();
         System.out.println("What would you like to do? (Add for adding Items),(Remove for removing items),(List for seeing the list of items)");
         String commandMain = scanner.nextLine();
  
 
-        if (commandMain.equals("Add")); {
+        if (commandMain.equals("Add")) {
           Methods.Add();
           break;
-
+        } else if (commandMain.equals("Remove")) {
+          Methods.Remove();
         }
         
       }
