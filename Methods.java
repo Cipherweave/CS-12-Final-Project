@@ -13,8 +13,10 @@ public class Methods {
         
         Scanner scanner = new Scanner(System.in);
         String item = "";
+        int commandExit = 0;
         int counterWood = 1;
         while(true) {
+
             while (true){
                 System.out.println("What Item would you like to add?(Type Wood for Wood)");
                 String commandItem = scanner.nextLine();
@@ -28,7 +30,7 @@ public class Methods {
             }
     
     
-              if (item.equals("Wood")) {
+            if (item.equals("Wood")) {
     
                 item = "";
                 System.out.println("Enter Wood Type:");
@@ -46,13 +48,30 @@ public class Methods {
                 newWood.setName("Wood " + counterWood);
                 //woodsList.add(newWood);
                 counterWood++;
-        
-                System.out.println("Would you like to add another Wood? (yes/no)");
-                String userInput = scanner.nextLine();
-                if (!userInput.equalsIgnoreCase("yes")) {
-                break;
+
+
+                while (true) {
+                    System.out.println("Would you like to add another Wood? (yes/no)");
+                    String userInput = scanner.nextLine();
+                    if (userInput.equalsIgnoreCase("yes")) {
+                        
+                    } else if (userInput.equalsIgnoreCase("no")) {
+                        commandExit = 1;
+                        break;  
+                    } else {
+                        System.out.println("Wrong input please try again");
+                    }
                 }
+                if (commandExit == 1){
+                    commandExit = 0;
+                    break;
+                }
+                
               }
+
+
+
+
             //   System.out.println("List of Woods:");
             //   for (Woods wood : woodsList) {
             //     System.out.println(wood.getName());
