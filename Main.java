@@ -19,20 +19,10 @@ class Main {
 
         System.out.println("What would you like to do? (Add for adding Items),(Remove for removing items),(List for seeing the list of items)");
         String commandMain = scanner.nextLine();
-        Methods.remove();
+ 
 
         if (commandMain.equals("Add")); {
-          while (true){
-            System.out.println("What Item would you like to add?(Type Wood for Wood)");
-            String commandItem = scanner.nextLine();
-            if (commandItem.equals("Wood")){
-              item = commandItem;
-              break;
-            } else {
-              System.out.println("Invalid input. Please try again");
-            }
-            
-          }
+          Methods.Add();
           break;
 
         }
