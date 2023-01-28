@@ -4,7 +4,7 @@ import java.util.ArrayList;
 class Main {
   public static void main(String[] args) {
 
-    ArrayList<Woods> woodsList = new ArrayList<>();
+    
     Scanner scanner = new Scanner(System.in);
     String item = "";
     int counterWood = 1;
@@ -31,36 +31,6 @@ class Main {
 
 
 
-  
-      if (item.equals("Wood")) {
-
-        item = "";
-        System.out.println("Enter Wood Type:");
-        String woodType = scanner.nextLine();
-        System.out.println("Enter Wood Weight(Kg):");
-        String woodWeight = scanner.nextLine();
-        System.out.println("Enter Wood Space Occupied(Metre squared):");
-        String woodSpaceOccupied = scanner.nextLine();
-        System.out.println("Enter Wood Value($ per Kg):");
-        String woodValue = scanner.nextLine();
-
-        
-        Woods newWood = new Woods(woodType, woodWeight, woodSpaceOccupied, woodValue);
- 
-        newWood.setName("Wood " + counterWood);
-        woodsList.add(newWood);
-        counterWood++;
-
-        System.out.println("Would you like to add another Wood? (yes/no)");
-        String userInput = scanner.nextLine();
-        if (!userInput.equalsIgnoreCase("yes")) {
-            break;
-        }
-      }
-      System.out.println("List of Woods:");
-      for (Woods wood : woodsList) {
-        System.out.println(wood.getName());
-      }
     } 
     
 

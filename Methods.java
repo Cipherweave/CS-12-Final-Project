@@ -5,12 +5,12 @@ import java.util.ArrayList;
 
 public class Methods {
 
+    
 
 
-
-
+    
     public static void Add() {
-        
+        ArrayList<Woods> woodsList = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         String item = "";
         int commandExit = 0;
@@ -46,7 +46,7 @@ public class Methods {
                 Woods newWood = new Woods(woodType, woodWeight, woodSpaceOccupied, woodValue);
          
                 newWood.setName("Wood " + counterWood);
-                //woodsList.add(newWood);
+                woodsList.add(newWood);
                 counterWood++;
 
 
@@ -54,7 +54,7 @@ public class Methods {
                     System.out.println("Would you like to add another Wood? (yes/no)");
                     String userInput = scanner.nextLine();
                     if (userInput.equalsIgnoreCase("yes")) {
-                        
+                        break;
                     } else if (userInput.equalsIgnoreCase("no")) {
                         commandExit = 1;
                         break;  
@@ -72,10 +72,11 @@ public class Methods {
 
 
 
-            //   System.out.println("List of Woods:");
-            //   for (Woods wood : woodsList) {
-            //     System.out.println(wood.getName());
-            //   }
+              
+        }
+        System.out.println("List of Woods:");
+        for (Woods wood : woodsList) {
+            System.out.println(wood.getName());
         }
         
     }
