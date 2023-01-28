@@ -8,16 +8,22 @@ public class Methods {
     static ArrayList<Woods> woodsList = new ArrayList<>();
     static int counterWood = 1;
 
-    public static void ShowList(){
+    public static void ShowWoodList(){
         if (woodsList.isEmpty()) {
             
         } else {
             System.out.println("This is your Wood list.");
             int counter2 = 1;
+            System.out.println("_____________________________________________________________________________");
+            System.out.println(String.format("| %4s | %-15s | %-10s | %-15s | %-15s|", "List", "Wood number code", "Wood Type", "Wood Weight (Kg)", "Wood Value($/Kg)"));
+            System.out.println("_____________________________________________________________________________");
+            
             for (Woods wood : woodsList) {
-                System.out.println(counter2 + ") " + wood.getName());
+                System.out.println(String.format("| %4d | %-15s  | %-10s | %-15s  | %-15s |", counter2, wood.getName(), wood.WoodType, wood.WoodWeight, wood.WoodValue));
+                System.out.println("_____________________________________________________________________________");
                 counter2 += 1;
             }
+
         }
     } 
 
@@ -107,7 +113,7 @@ public class Methods {
             System.out.println("Sure this is your Wood list.");
             int counter2 = 1;
             for (Woods wood : woodsList) {
-                System.out.println(counter2 + ") " + wood.getName());
+                System.out.println(counter2 + ") " + wood.getName() );
                 counter2 += 1;
             }
 
