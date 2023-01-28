@@ -18,7 +18,7 @@ class Main {
       while (true){
 
         Methods.ShowWoodList();
-        System.out.println("What would you like to do? (Add for adding Items),(Remove for removing items),(List for seeing the list of items)");
+        System.out.println("What would you like to do? (Type Add for adding Items),(Type Remove for removing items),(Type Sort for Sorting)");
         String commandMain = scanner.nextLine();
  
 

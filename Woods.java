@@ -1,12 +1,12 @@
 public class Woods {
     private String name;
     String WoodType = "";
-    String WoodWeight = "";
-    String WoodSpaceOccupied = "";
-    String WoodValue = "";
+    float WoodWeight = 0;
+    float WoodSpaceOccupied = 0;
+    float WoodValue = 0;
 
 
-    public Woods(String type, String weight, String space, String value) {
+    public Woods(String type, float weight, float space, float value) {
         WoodType = type;
         WoodWeight = weight;
         WoodSpaceOccupied = space;
@@ -21,13 +21,13 @@ public class Woods {
     public void setWoodType(String type) {
         this.WoodType = type;
     }
-    public void setWoodWeight(String weight) {
+    public void setWoodWeight(float weight) {
         this.WoodWeight = weight;
     }
-    public void setWoodSpaceOccupied(String space) {
+    public void setWoodSpaceOccupied(float space) {
         this.WoodSpaceOccupied = space;
     }
-    public void setWoodValue(String value) {
+    public void setWoodValue(float value) {
         this.WoodValue = value;
     }
 }
