@@ -21,7 +21,7 @@ public class Methods {
             System.out.println("_____________________________________________________________________________________________");
     
             for (Woods wood : woodsList) {
-                System.out.println(String.format("| %4d | %-15s | %-10s | %-15.2f | %-15.2f | %-15.2f|", counter2, wood.getName(), wood.getWoodType(), wood.getWoodWeight(), wood.getWoodSpaceOccupied(), wood.getWoodValue()));
+                System.out.println(String.format("| %4d | %-15s | %-10s | %-15.2f | %-15.2f | %-15.2f|", counter2, wood.getName(), wood.getItemType(), wood.getItemWeight(), wood.getItemSpaceOccupied(), wood.getItemValue()));
                 System.out.println("_____________________________________________________________________________________________");
                 counter2 += 1;
             }
@@ -163,7 +163,7 @@ public class Methods {
                 woodsList.sort(new Comparator<Woods>() {
                     @Override
                     public int compare(Woods o1, Woods o2) {
-                        return Float.compare(o2.getWoodWeight(), o1.getWoodWeight());
+                        return Float.compare(o2.getItemWeight(), o1.getItemWeight());
                     }
                 });
                 break;
@@ -172,7 +172,7 @@ public class Methods {
                 woodsList.sort(new Comparator<Woods>() {
                     @Override
                     public int compare(Woods o1, Woods o2) {
-                        return Float.compare(o2.getWoodSpaceOccupied(), o1.getWoodSpaceOccupied());
+                        return Float.compare(o2.getItemSpaceOccupied(), o1.getItemSpaceOccupied());
                     }
                 });
                 break;
@@ -181,7 +181,7 @@ public class Methods {
                 woodsList.sort(new Comparator<Woods>() {
                     @Override
                     public int compare(Woods o1, Woods o2) {
-                        return Float.compare(o2.getWoodValue(), o1.getWoodValue());
+                        return Float.compare(o2.getItemValue(), o1.getItemValue());
                     }
                 });
                 break;

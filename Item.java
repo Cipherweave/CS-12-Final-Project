@@ -21,6 +21,9 @@ public class Item {
     public void setItemType(String type) {
         this.itemType = type;
     }
+    public String getItemType() {
+        return itemType;
+    }
     public void setItemWeight(float weight) {
         this.itemWeight = weight;
     }
