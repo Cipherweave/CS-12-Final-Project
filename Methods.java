@@ -10,24 +10,23 @@ public class Methods {
     static ArrayList<Woods> woodsList = new ArrayList<>();
     static int counterWood = 1;
 
-    public static void ShowWoodList(){
+    public static void ShowWoodList() {
         if (woodsList.isEmpty()) {
-            
+            System.out.println("The list is empty");
         } else {
             System.out.println("This is your Wood list.");
             int counter2 = 1;
             System.out.println("_____________________________________________________________________________________________");
-            System.out.println(String.format("| %4s | %-15s | %-10s | %-15s | %-15s| %-15s|", "List", "Wood number code", "Wood Type", "Wood Weight (Kg)","Wood Space(M^2)", "Wood Value($/Kg)"));
-            System.out.println("_____________________________________________________________________________");
-            
+            System.out.println(String.format("| %4s | %-15s | %-10s | %-15s | %-15s| %-15s|", "List", "Wood number code", "Wood Type", "Wood Weight (Kg)", "Wood Space(M^2)", "Wood Value($/Kg)"));
+            System.out.println("_____________________________________________________________________________________________");
+    
             for (Woods wood : woodsList) {
-                System.out.println(String.format("| %4d | %-15s  | %-10s | %-15s  | %-15s | %-15s|", counter2, wood.getName(), wood.WoodType,  wood.WoodWeight, wood.WoodSpaceOccupied , wood.WoodValue));
+                System.out.println(String.format("| %4d | %-15s | %-10s | %-15.2f | %-15.2f | %-15.2f|", counter2, wood.getName(), wood.getWoodType(), wood.getWoodWeight(), wood.getWoodSpaceOccupied(), wood.getWoodValue()));
                 System.out.println("_____________________________________________________________________________________________");
                 counter2 += 1;
             }
-
         }
-    } 
+    }
 
     public static void Add() {
 
