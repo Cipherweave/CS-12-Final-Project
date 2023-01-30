@@ -164,7 +164,7 @@ public class Methods {
                 woodsList.sort(new Comparator<Woods>() {
                     @Override
                     public int compare(Woods o1, Woods o2) {
-                        return Float.compare(o1.getWoodWeight(), o2.getWoodWeight());
+                        return Float.compare(o2.getWoodWeight(), o1.getWoodWeight());
                     }
                 });
                 break;
@@ -173,7 +173,7 @@ public class Methods {
                 woodsList.sort(new Comparator<Woods>() {
                     @Override
                     public int compare(Woods o1, Woods o2) {
-                        return Float.compare(o1.getWoodSpaceOccupied(), o2.getWoodSpaceOccupied());
+                        return Float.compare(o2.getWoodSpaceOccupied(), o1.getWoodSpaceOccupied());
                     }
                 });
                 break;
@@ -182,7 +182,7 @@ public class Methods {
                 woodsList.sort(new Comparator<Woods>() {
                     @Override
                     public int compare(Woods o1, Woods o2) {
-                        return Float.compare(o1.getWoodValue(), o2.getWoodValue());
+                        return Float.compare(o2.getWoodValue(), o1.getWoodValue());
                     }
                 });
                 break;
