@@ -16,13 +16,13 @@ public class Methods {
         } else {
             System.out.println("This is your Wood list.");
             int counter2 = 1;
-            System.out.println("_____________________________________________________________________________");
+            System.out.println("_____________________________________________________________________________________________");
             System.out.println(String.format("| %4s | %-15s | %-10s | %-15s | %-15s| %-15s|", "List", "Wood number code", "Wood Type", "Wood Weight (Kg)","Wood Space(M^2)", "Wood Value($/Kg)"));
             System.out.println("_____________________________________________________________________________");
             
             for (Woods wood : woodsList) {
                 System.out.println(String.format("| %4d | %-15s  | %-10s | %-15s  | %-15s | %-15s|", counter2, wood.getName(), wood.WoodType,  wood.WoodWeight, wood.WoodSpaceOccupied , wood.WoodValue));
-                System.out.println("_____________________________________________________________________________");
+                System.out.println("_____________________________________________________________________________________________");
                 counter2 += 1;
             }
 
