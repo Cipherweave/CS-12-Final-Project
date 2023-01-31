@@ -16,6 +16,9 @@ public class Methods {
     //A variable counterWood to keep track of number of woods
     static int counterWood = 1;
 
+    //A variable counterMetals to keep track of number of woods
+    static int counterMetals = 1;
+
 
 
     /*****************************************
@@ -116,7 +119,7 @@ public class Methods {
 
             //A loop to ask for type of item user wants to add, until he enters valid input
             while (true){
-                System.out.println("What Item would you like to add?(Type Wood for Wood)");
+                System.out.println("What Item would you like to add?(Type Wood for Wood),(Type Metal for Metals)");
                 //Taking input from user for type of item
                 String commandItem = scanner.nextLine();
                 //If user entered "Wood", setting item variable to "Wood" and breaking the loop
@@ -199,6 +202,76 @@ public class Methods {
                 System.out.println("The Wood has succesfully added!");
                 // Break out of the loop
                 break;
+
+
+
+            } else if(item.equals("Metal")) {
+                // Reset item variable
+                item = "";
+                // Read input for Metal type
+                System.out.println("Enter Metal Type:");
+                // Read input for Metal type
+                String MetalsType = scanner.nextLine();
+
+                float weight = 0;
+                // Loop to get valid weight input
+                while(true){
+                    System.out.println("Enter Metal Weight(Kg):");
+                    String MetalWeight = scanner.nextLine();
+                    
+                    try {
+                        // Try to parse the input to float
+                        weight = Float.parseFloat(MetalWeight);
+                        break;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Please enter a valid number for Metal weight.");
+                    }
+                }
+                
+                float space = 0;
+                // Loop to get valid space occupied input
+                while(true){
+                    System.out.println("Enter Metal Space Occupied(Metre squared):");
+                    String MetalSpaceOccupied = scanner.nextLine();
+                    
+                    try {
+                        // Try to parse the input to float
+                        space = Float.parseFloat(MetalSpaceOccupied);
+                        break;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Please enter a valid number for Metal space occupied.");
+                        
+                    }
+                }
+                
+                float value = 0;
+                // Loop to get valid value input
+                while(true){
+                    System.out.println("Enter Metal Value($ per Kg):");
+                    String MetalValue = scanner.nextLine();
+                    
+                    try {
+                        // Try to parse the input to float
+                        value = Float.parseFloat(MetalValue);
+                        break;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Please enter a valid number for Metal value.");
+                        
+                    }
+                }
+                
+                // Create new Metal object with inputs
+                Metals newMetal = new Metals(MetalsType, weight, space, value);
+                // Set name of the Metal object
+                newMetal.setName("Metal " + counterWood);
+                // Add Metal object to the list
+                metalsList.add(newMetal);
+                // Increment counter for Metal
+                counterMetals++;
+                System.out.println("The Metal has succesfully added!");
+                // Break out of the loop
+                break;
+
             }
 
 
