@@ -53,6 +53,7 @@ class Main {
       while (true){
         // Call the `ShowWoodList` method from the `Methods` class to show the items
         Methods.ShowWoodList(); 
+        Methods.ShowMetalsList(); 
 
         // Prompt the user for a command
         System.out.println("What would you like to do? (Type Add for adding Items),(Type Remove for removing items),(Type Sort for Sorting)");

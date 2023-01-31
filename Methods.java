@@ -10,13 +10,16 @@ public class Methods {
     //ArrayList woodsList to store objects of type Woods
     static ArrayList<Woods> woodsList = new ArrayList<>();
 
+    //ArrayList metalsList to store objects of type Metals
+    static ArrayList<Metals> metalsList = new ArrayList<>();
+
     //A variable counterWood to keep track of number of woods
     static int counterWood = 1;
 
 
 
     /*****************************************
-   * /*Method Name: Showlist
+   * /*Method Name: ShowWoodlist
    * /*Programmer Name: Ali Karimi
    * /*Method Date: 1/30/2023
    * /*Method Description: This Method showes the list of all Items + their characteristics and its called from the main File
@@ -52,6 +55,43 @@ public class Methods {
     }
 
 
+      /*****************************************
+   * /*Method Name: ShowWoodlist
+   * /*Programmer Name: Ali Karimi
+   * /*Method Date: 1/30/2023
+   * /*Method Description: This Method showes the list of all Items + their characteristics and its called from the main File
+   * /*Method Inputs/Outputs: input: User inputs
+   * output: List of all Items with their characteristics.
+   ******************************************/
+    public static void ShowMetalsList() {
+
+        //If the list is empty, it shows a message
+        if (woodsList.isEmpty()) {
+            System.out.println("The list is empty");
+
+        //Otherwise, it shows the list of woods with table format
+        } else {
+            System.out.println("This is your Metals list.");
+            //A variable to keep count of woods in the list
+            int counter2 = 1;
+
+            //Showing the header for table
+            System.out.println("_________________________________________________________________________________________________");
+            //Displaying the columns with table format
+            System.out.println(String.format("| %4s | %-15s | %-10s | %-15s | %-15s| %-15s|", "List", "Metal number code", "Metal Type", "Metal Weight (Kg)", "Metal Space(M^2)", "Metal Value($/Kg)"));
+            System.out.println("_________________________________________________________________________________________________");
+
+            //Iterating through the list to display all the woods in table format
+            for (Metals metal : metalsList) {
+                System.out.println(String.format("| %4d | %-15s  | %-10s | %-15.2f | %-15.2f | %-15.2f |", counter2, metal.getName(), metal.getItemType(), metal.getItemWeight(), metal.getItemSpaceOccupied(), metal.getItemValue()));
+                System.out.println("_________________________________________________________________________________________________");
+                //Increasing the counter2 by 1
+                counter2 += 1;
+            }
+    }
+}
+
+
     /*****************************************
    * /*Method Name: Add to List
    * /*Programmer Name: Ali Karimi
@@ -81,8 +121,11 @@ public class Methods {
                 String commandItem = scanner.nextLine();
                 //If user entered "Wood", setting item variable to "Wood" and breaking the loop
                 if (commandItem.equals("Wood")){
-                  item = commandItem;
-                  break;
+                    item = commandItem;
+                    break;
+                } else if (commandItem.equals("Metal")) {
+                    item = commandItem;
+                    break;   
                 } else {
                   System.out.println("Invalid input. Please try again");
                 }
