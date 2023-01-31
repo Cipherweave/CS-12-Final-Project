@@ -36,7 +36,7 @@ class Main {
   public static void main(String[] args) {
 
 
-    GUI.PAGE();
+    Methods.PAGE();
     // Initialize the Scanner class for taking user inputs
     Scanner scanner = new Scanner(System.in);
     // Initialize an empty string for storing the item
