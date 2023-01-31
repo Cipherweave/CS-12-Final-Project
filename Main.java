@@ -29,6 +29,8 @@ class Main {
           Methods.Remove();
         } else if (commandMain.equals("Sort")) {
           Methods.sort();
+        } else {
+          System.out.println("Wrong command");
         }
         
       }
