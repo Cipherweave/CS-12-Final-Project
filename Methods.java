@@ -414,6 +414,8 @@ public class Methods {
             
     }
 
+
+    
     public static void PAGE() {
 
 
@@ -459,10 +461,17 @@ public class Methods {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         String woodType = woodTypeField.getText();
-                        double woodWeight = Double.parseDouble(woodWeightField.getText());
-                        double woodSpace = Double.parseDouble(woodSpaceField.getText());
-                        double woodValue = Double.parseDouble(woodValueField.getText());
-                        //MethodFiles.addWood(woodType, woodWeight, woodSpace, woodValue);
+                        float woodWeight = Float.parseFloat(woodWeightField.getText());
+                        float woodSpace = Float.parseFloat(woodSpaceField.getText());
+                        float woodValue = Float.parseFloat(woodValueField.getText());
+                        // Create new Wood object with inputs
+                        Woods newWood = new Woods(woodType, woodWeight, woodSpace, woodValue);
+                        // Set name of the Wood object
+                        newWood.setName("Wood " + counterWood);
+                        // Add Wood object to the list
+                        woodsList.add(newWood);
+                        // Increment counter for Wood
+                        counterWood++;
                         model.addRow(new Object[] {model.getRowCount() + 1, "Wood " + (model.getRowCount() + 1), woodType, woodWeight, woodSpace, woodValue});
                         addWoodDialog.dispose();
                     }
@@ -511,10 +520,17 @@ public class Methods {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         String metalType = metalTypeField.getText();
-                        double metalWeight = Double.parseDouble(metalWeightField.getText());
-                        double metalSpace = Double.parseDouble(metalSpaceField.getText());
-                        double metalValue = Double.parseDouble(metalValueField.getText());
-                        //Method.addMetal(metalType, metalWeight, metalSpace, metalValue);
+                        float metalWeight = Float.parseFloat(metalWeightField.getText());
+                        float metalSpace = Float.parseFloat(metalSpaceField.getText());
+                        float metalValue = Float.parseFloat(metalValueField.getText());
+                        // Create new Metal object with inputs
+                        Metals newMetal = new Metals(metalType, metalWeight, metalSpace, metalValue);
+                        // Set name of the Metal object
+                        newMetal.setName("Metal " + counterMetals);
+                        // Add Metal object to the list
+                        metalsList.add(newMetal);
+                        // Increment counter for Metal
+                        counterMetals++;
                         model2.addRow(new Object[] {model2.getRowCount() + 1, "Metal " + (model2.getRowCount() + 1), metalType, metalWeight, metalSpace, metalValue});
                         addMetalDialog.dispose();
                     }
@@ -523,6 +539,9 @@ public class Methods {
                 addMetalDialog.pack();
                 addMetalDialog.setVisible(true);
             }
+
+
+
         });
         buttons2.add(addMetalButton);
         panel2.add(buttons2, BorderLayout.SOUTH);
