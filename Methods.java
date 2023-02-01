@@ -314,6 +314,9 @@ public class Methods {
          // Create a scanner object to get input from the user
         Scanner scanner = new Scanner(System.in);
 
+
+
+
         // Check if the list of woods is empty
         if (woodsList.isEmpty()) {
             //System.out.println("The list is empty");
@@ -415,7 +418,7 @@ public class Methods {
     }
 
 
-    
+
     public static void PAGE() {
 
 
@@ -485,6 +488,23 @@ public class Methods {
         panel1.add(buttons1, BorderLayout.SOUTH);
         tabbedPane.addTab("Woods", panel1);
 
+
+        JButton removeWoodButton = new JButton("Remove Wood");
+        removeWoodButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int selectedRow = table.getSelectedRow();
+            if (selectedRow != -1) {
+                // Remove the selected row from the table
+                model.removeRow(selectedRow);
+                // Remove the corresponding object from the woodsList
+                woodsList.remove(selectedRow);
+            }
+        }
+        });
+        buttons1.add(removeWoodButton);
+        
+
         JPanel panel2 = new JPanel();
         panel2.setLayout(new BorderLayout());
 
@@ -546,6 +566,27 @@ public class Methods {
         buttons2.add(addMetalButton);
         panel2.add(buttons2, BorderLayout.SOUTH);
         tabbedPane.addTab("Metals", panel2);
+
+
+        JButton removeMetalButton = new JButton("Remove Metal");
+        removeMetalButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectedRow = table2.getSelectedRow();
+                if (selectedRow != -1) {
+                    Metals metalToRemove = metalsList.get(selectedRow);
+                    metalsList.remove(metalToRemove);
+                    model2.removeRow(selectedRow);
+                } else {
+                    JOptionPane.showMessageDialog(frame, "Please select a row to remove.");
+                }
+            }
+        });
+        buttons2.add(removeMetalButton);
+
+
+
+
 
         frame.add(tabbedPane, BorderLayout.CENTER);
         frame.setVisible(true);
