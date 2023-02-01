@@ -423,7 +423,7 @@ public class Methods {
 
 
 
-        JFrame frame = new JFrame("Tabs with Buttons");
+        JFrame frame = new JFrame("Main");
         frame.setSize(500, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -489,6 +489,8 @@ public class Methods {
         tabbedPane.addTab("Woods", panel1);
 
 
+        //-----------------------------------------------------------------
+
         JButton removeWoodButton = new JButton("Remove Wood");
         removeWoodButton.addActionListener(new ActionListener() {
         @Override
@@ -504,6 +506,104 @@ public class Methods {
         });
         buttons1.add(removeWoodButton);
         
+
+        //-----------------------------------------------------------------
+
+        JButton sortWoodButton = new JButton("Sort By");
+        sortWoodButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JPanel panel4 = new JPanel();
+                panel4.setLayout(new BorderLayout());
+                
+                JPanel sortOptions = new JPanel();
+                sortOptions.setLayout(new GridLayout(1, 3));
+                JButton sortByWeightButton = new JButton("Weight");
+                sortByWeightButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        // Sort the woodsList by weight
+                        woodsList.sort(new Comparator<Woods>() {
+                            @Override
+                            public int compare(Woods w1, Woods w2) {
+                                return Float.compare(w1.getItemWeight(), w2.getItemWeight());
+                            }
+                        });
+                        // Update the table to reflect the sorted order
+                        for (int i = 0; i < model.getRowCount(); i++) {
+                            model.setValueAt(woodsList.get(i).getName(), i, 1);
+                            model.setValueAt(woodsList.get(i).getItemType(), i, 2);
+                            model.setValueAt(woodsList.get(i).getItemWeight(), i, 3);
+                            model.setValueAt(woodsList.get(i).getItemSpaceOccupied(), i, 4);
+                            model.setValueAt(woodsList.get(i).getItemValue(), i, 5);
+                        }
+                    }
+                });
+                sortOptions.add(sortByWeightButton);
+                JButton sortBySpaceButton = new JButton("Space Occupied");
+                sortBySpaceButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        // Sort the woodsList by space occupied
+                        woodsList.sort(new Comparator<Woods>() {
+                            @Override
+                            public int compare(Woods w1, Woods w2) {
+                                return Float.compare(w1.getItemSpaceOccupied(), w2.getItemSpaceOccupied());
+                            }
+                        });
+                        // Update the table to reflect the sorted order
+                        for (int i = 0; i < model.getRowCount(); i++) {
+                            model.setValueAt(woodsList.get(i).getName(), i, 1);
+                            model.setValueAt(woodsList.get(i).getItemType(), i, 2);
+                            model.setValueAt(woodsList.get(i).getItemWeight(), i, 3);
+                            model.setValueAt(woodsList.get(i).getItemSpaceOccupied(), i, 4);
+                            model.setValueAt(woodsList.get(i).getItemValue(), i, 5);
+                        }
+                    }
+                });
+                sortOptions.add(sortBySpaceButton);
+                JButton sortByValueButton = new JButton("Value");
+                sortByValueButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        // Sort the woodsList by value
+                        woodsList.sort(new Comparator<Woods>() {
+                            @Override
+                            public int compare(Woods w1, Woods w2) {
+                                return Float.compare(w1.getItemValue(), w2.getItemValue());
+                            }
+                        });
+                        // Update the table to reflect the sorted order
+                        for (int i = 0; i < model.getRowCount(); i++) {
+                            model.setValueAt(woodsList.get(i).getName(), i, 1);
+                            model.setValueAt(woodsList.get(i).getItemType(), i, 2);
+                            model.setValueAt(woodsList.get(i).getItemWeight(), i, 3);
+                            model.setValueAt(woodsList.get(i).getItemSpaceOccupied(), i, 4);
+                            model.setValueAt(woodsList.get(i).getItemValue(), i, 5);
+                        }
+                    }
+                });
+                sortOptions.add(sortByValueButton);
+                panel4.add(sortOptions, BorderLayout.CENTER);
+                JFrame sortFrame = new JFrame("Sort By");
+                sortFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                sortFrame.setSize(400, 100);
+                sortFrame.setLocationRelativeTo(null);
+                sortFrame.setResizable(false);
+                sortFrame.add(panel4);
+                sortFrame.setVisible(true);
+       
+            }
+        });
+        buttons1.add(sortWoodButton);
+
+        
+            
+            
+
+
+
+        ///************************************************************************
 
         JPanel panel2 = new JPanel();
         panel2.setLayout(new BorderLayout());
@@ -567,6 +667,7 @@ public class Methods {
         panel2.add(buttons2, BorderLayout.SOUTH);
         tabbedPane.addTab("Metals", panel2);
 
+        //-----------------------------------------------------------------
 
         JButton removeMetalButton = new JButton("Remove Metal");
         removeMetalButton.addActionListener(new ActionListener() {
@@ -583,6 +684,97 @@ public class Methods {
             }
         });
         buttons2.add(removeMetalButton);
+
+
+        //-----------------------------------------------------------------
+
+        JButton sortMetalButton = new JButton("Sort By ");
+        sortMetalButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JPanel panel5 = new JPanel();
+                panel5.setLayout(new BorderLayout());
+                
+                JPanel sortOptions2 = new JPanel();
+                sortOptions2.setLayout(new GridLayout(1, 3));
+                JButton sortByWeightButton = new JButton("Weight");
+                sortByWeightButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        // Sort the metalsList by weight
+                        metalsList.sort(new Comparator<Metals>() {
+                            @Override
+                            public int compare(Metals w1, Metals w2) {
+                                return Float.compare(w1.getItemWeight(), w2.getItemWeight());
+                            }
+                        });
+                        // Update the table to reflect the sorted order
+                        for (int i = 0; i < model2.getRowCount(); i++) {
+                            model2.setValueAt(metalsList.get(i).getName(), i, 1);
+                            model2.setValueAt(metalsList.get(i).getItemType(), i, 2);
+                            model2.setValueAt(metalsList.get(i).getItemWeight(), i, 3);
+                            model2.setValueAt(metalsList.get(i).getItemSpaceOccupied(), i, 4);
+                            model2.setValueAt(metalsList.get(i).getItemValue(), i, 5);
+                        }
+                    }
+                });
+                sortOptions2.add(sortByWeightButton);
+                JButton sortBySpaceButton = new JButton("Space Occupied");
+                sortBySpaceButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        // Sort the metalsList by space occupied
+                        metalsList.sort(new Comparator<Metals>() {
+                            @Override
+                            public int compare(Metals w1, Metals w2) {
+                                return Float.compare(w1.getItemSpaceOccupied(), w2.getItemSpaceOccupied());
+                            }
+                        });
+                        // Update the table to reflect the sorted order
+                        for (int i = 0; i < model2.getRowCount(); i++) {
+                            model2.setValueAt(metalsList.get(i).getName(), i, 1);
+                            model2.setValueAt(metalsList.get(i).getItemType(), i, 2);
+                            model2.setValueAt(metalsList.get(i).getItemWeight(), i, 3);
+                            model2.setValueAt(metalsList.get(i).getItemSpaceOccupied(), i, 4);
+                            model2.setValueAt(metalsList.get(i).getItemValue(), i, 5);
+                        }
+                    }
+                });
+                sortOptions2.add(sortBySpaceButton);
+                JButton sortByValueButton = new JButton("Value");
+                sortByValueButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        // Sort the metalsList by value
+                        metalsList.sort(new Comparator<Metals>() {
+                            @Override
+                            public int compare(Metals w1, Metals w2) {
+                                return Float.compare(w1.getItemValue(), w2.getItemValue());
+                            }
+                        });
+                        // Update the table to reflect the sorted order
+                        for (int i = 0; i < model2.getRowCount(); i++) {
+                            model2.setValueAt(metalsList.get(i).getName(), i, 1);
+                            model2.setValueAt(metalsList.get(i).getItemType(), i, 2);
+                            model2.setValueAt(metalsList.get(i).getItemWeight(), i, 3);
+                            model2.setValueAt(metalsList.get(i).getItemSpaceOccupied(), i, 4);
+                            model2.setValueAt(metalsList.get(i).getItemValue(), i, 5);
+                        }
+                    }
+                });
+                sortOptions2.add(sortByValueButton);
+                panel5.add(sortOptions2, BorderLayout.CENTER);
+                JFrame sortFrame = new JFrame("Sort By");
+                sortFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                sortFrame.setSize(400, 100);
+                sortFrame.setLocationRelativeTo(null);
+                sortFrame.setResizable(false);
+                sortFrame.add(panel5);
+                sortFrame.setVisible(true);
+       
+            }
+        });
+        buttons2.add(sortMetalButton);
 
 
 
