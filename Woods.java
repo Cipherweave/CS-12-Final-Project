@@ -2,7 +2,9 @@
 public class Woods extends Item {
 
     //A constructor that takes 4 parameters as input and passes them to the super class constructor
-    public Woods(String type, float weight, float space, float value) {
-        super(type, weight, space, value);
+    public Woods(String type, float woodWeight, float woodSpace, float woodValue) {
+        super(type, woodWeight, woodSpace, woodValue);
     }
+
+  
 }
