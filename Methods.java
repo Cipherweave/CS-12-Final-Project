@@ -18,6 +18,9 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 //Declaring a class Methods 
 public class Methods {
@@ -419,46 +422,97 @@ public class Methods {
 
 
 
+    /*****************************************
+   * /*Method Name: GUI
+   * /*Programmer Name: Ali Karimi
+   * /*Method Date: 2/1/2023
+   * /*Method Description: Runes the User interface
+ 
+   * /*Method Inputs/Outputs: input: No Inputs
+   * output: complete User interface
+   ******************************************/
     public static void PAGE() {
 
 
-
+        // Create a JFrame named "Main"
         JFrame frame = new JFrame("Main");
+
+        // Set the size of the JFrame to 500 x 400 pixels
         frame.setSize(500, 400);
+        // Specify that the JFrame should close when the close button is pressed
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        // Create a JTabbedPane to hold multiple tabs
         JTabbedPane tabbedPane = new JTabbedPane();
 
+        // Create a JPanel for the first tab
         JPanel panel1 = new JPanel();
+
+        // Set the layout of the JPanel to BorderLayout
         panel1.setLayout(new BorderLayout());
 
-        // Create the table for the Woods tab
+        // Define the column names for the table
         String[] columnNames = {"List", "Wood Number Code", "Wood Type", "Wood Weight (Kg)", "Wood Space (M^2)", "Wood Value ($/Kg)"};
+        
+        // Create a DefaultTableModel with the column names
         DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+
+        // Create a JTable with the model
         JTable table = new JTable(model);
+
+        // Wrap the JTable in a JScrollPane to allow scrolling
         JScrollPane scrollPane = new JScrollPane(table);
+
+        // Add the JScrollPane to the JPanel in the center position
         panel1.add(scrollPane, BorderLayout.CENTER);
 
+        // Create a JPanel for the buttons
         JPanel buttons1 = new JPanel();
+
+        // Set the layout of the buttons JPanel to GridLayout with 1 row and 5 columns
         buttons1.setLayout(new GridLayout(1, 5));
+
+        // Create a JButton named "Add Wood"
         JButton addWoodButton = new JButton("Add Wood");
+
+        // Add an ActionListener to the "Add Wood" button
         addWoodButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                // Create a JDialog with the title "Add Wood" and modal set to true
                 JDialog addWoodDialog = new JDialog(frame, "Add Wood", true);
+
+                // Set the layout of the JDialog to GridLayout with 5 rows and 2 columns
                 addWoodDialog.setLayout(new GridLayout(5, 2));
+
+                // Add a JLabel with the text "Wood Type:" to the JDialog
                 addWoodDialog.add(new JLabel("Wood Type:"));
+
+                // Create a JTextField for the user to input the wood type
                 JTextField woodTypeField = new JTextField();
+
+                // Add the wood type JTextField to the JDialog
                 addWoodDialog.add(woodTypeField);
+
+                // Add a JLabel with the text "Wood Weight (Kg):" to the JDialog
                 addWoodDialog.add(new JLabel("Wood Weight (Kg):"));
+
+                // Create a JTextField for the user to input the wood weight
                 JTextField woodWeightField = new JTextField();
+
+                // Add the wood weight JTextField to the JDialog
                 addWoodDialog.add(woodWeightField);
+
+                // Add a JLabel with the text "Wood Space (M^2):" to the JDialog
                 addWoodDialog.add(new JLabel("Wood Space (M^2):"));
                 JTextField woodSpaceField = new JTextField();
                 addWoodDialog.add(woodSpaceField);
                 addWoodDialog.add(new JLabel("Wood Value ($/Kg):"));
                 JTextField woodValueField = new JTextField();
                 addWoodDialog.add(woodValueField);
+
+                // Create an ActionListener for the "Add Wood" button
                 JButton addWoodConfirmButton = new JButton("Add");
                 addWoodConfirmButton.addActionListener(new ActionListener() {
                     @Override
@@ -481,6 +535,7 @@ public class Methods {
                 });
                 addWoodDialog.add(addWoodConfirmButton);
                 addWoodDialog.pack();
+                // Make it on the screen
                 addWoodDialog.setVisible(true);
             }
         });
@@ -491,11 +546,17 @@ public class Methods {
 
         //-----------------------------------------------------------------
 
+        // Creating a new JButton with the label "Remove Wood"
         JButton removeWoodButton = new JButton("Remove Wood");
+
+        // Adding an ActionListener to the button
         removeWoodButton.addActionListener(new ActionListener() {
         @Override
+        // Defining what should happen when the button is clicked
         public void actionPerformed(ActionEvent e) {
+            // Getting the selected row in the table
             int selectedRow = table.getSelectedRow();
+            // If a row is selected, proceed
             if (selectedRow != -1) {
                 // Remove the selected row from the table
                 model.removeRow(selectedRow);
@@ -504,32 +565,43 @@ public class Methods {
             }
         }
         });
+        // Adding the button to the buttons1 container
         buttons1.add(removeWoodButton);
         
 
         //-----------------------------------------------------------------
 
+        // Create a button named "Sort By"
         JButton sortWoodButton = new JButton("Sort By");
+
+
+        // Add an action listener to the button to perform actions when it's clicked
         sortWoodButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // Create a JPanel named panel4 with BorderLayout as its layout
                 JPanel panel4 = new JPanel();
                 panel4.setLayout(new BorderLayout());
                 
+                // Create a JPanel named sortOptions with GridLayout as its layout
                 JPanel sortOptions = new JPanel();
                 sortOptions.setLayout(new GridLayout(1, 3));
+
+                // Create a button named "Weight"
                 JButton sortByWeightButton = new JButton("Weight");
+
+                // Add an action listener to the button to perform actions when it's clicked
                 sortByWeightButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        // Sort the woodsList by weight
+                        // Sort the list "woodsList" by weight using a custom comparator
                         woodsList.sort(new Comparator<Woods>() {
                             @Override
                             public int compare(Woods w1, Woods w2) {
                                 return Float.compare(w1.getItemWeight(), w2.getItemWeight());
                             }
                         });
-                        // Update the table to reflect the sorted order
+                        // Update the table by setting the values in the table to the values in the sorted woodsList
                         for (int i = 0; i < model.getRowCount(); i++) {
                             model.setValueAt(woodsList.get(i).getName(), i, 1);
                             model.setValueAt(woodsList.get(i).getItemType(), i, 2);
@@ -539,8 +611,14 @@ public class Methods {
                         }
                     }
                 });
+
+                // Add the sortByWeightButton to the sortOptions panel
                 sortOptions.add(sortByWeightButton);
+
+                // Create a button named "Space Occupied"
                 JButton sortBySpaceButton = new JButton("Space Occupied");
+
+                // Add an action listener to the button to perform actions when it's clicked
                 sortBySpaceButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -583,14 +661,32 @@ public class Methods {
                         }
                     }
                 });
+
+                // Add the sortByValueButton to the sortOptions JComboBox
                 sortOptions.add(sortByValueButton);
+
+                // Add the sortOptions JComboBox to panel4 with a BorderLayout in the center
                 panel4.add(sortOptions, BorderLayout.CENTER);
+
+                // Create a new JFrame for the sort options
                 JFrame sortFrame = new JFrame("Sort By");
+
+                // Set the default close operation for the sortFrame to dispose on close
                 sortFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+                // Set the size of the sortFrame to 400x100 pixels
                 sortFrame.setSize(400, 100);
+
+                // Center the sortFrame on the screen
                 sortFrame.setLocationRelativeTo(null);
+
+                // Set the sortFrame to not be resizable
                 sortFrame.setResizable(false);
+
+                // Add panel4 to the sortFrame
                 sortFrame.add(panel4);
+
+                // Make the sortFrame visible
                 sortFrame.setVisible(true);
        
             }
@@ -605,11 +701,19 @@ public class Methods {
 
         ///************************************************************************
 
+
+        //Panel2 structure is exaclty like Panel1 So there was no need of commenting 
+        // it all over again
+
+
+        // Create a JPanel for the Metals tab
         JPanel panel2 = new JPanel();
         panel2.setLayout(new BorderLayout());
 
-        // Create the table for the Metals tab
+        // Create the column names for the table in the Metals tab
         String[] columnNames2 = {"List", "Metal Number Code", "Metal Type", "Metal Weight (Kg)", "Metal Space (M^2)", " Metal Value ($/Kg)"};
+        
+        // Create a DefaultTableModel using the column names
         DefaultTableModel model2 = new DefaultTableModel(columnNames2, 0);
         JTable table2 = new JTable(model2);
         JScrollPane scrollPane2 = new JScrollPane(table2);
