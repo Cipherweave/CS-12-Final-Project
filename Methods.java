@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Collections;
-import  java.util.Comparator;
+import java.util.Comparator;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -19,13 +19,16 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
 import java.awt.*;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
+import java.io.PrintWriter;
 import java.io.IOException;
-import java.io.IOException;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.util.Arrays;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 
 
@@ -46,8 +49,11 @@ public class Methods {
     //A variable counterWood to keep track of number of woods
     static int counterWood = 1;
 
+    static int counterWood2 = 1;
     //A variable counterMetals to keep track of number of woods
     static int counterMetals = 1;
+
+    static int counterMetals2 = 1;
 
 
     /*****************************************
@@ -58,8 +64,23 @@ public class Methods {
    * /*Method Inputs/Outputs: input: Array List Woods and Metals
    * output: update the Hostory File
    ******************************************/
-    public static void Save(){
+    public static void Save() {
+        try (FileWriter fw = new FileWriter("History.txt", false);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter out = new PrintWriter(bw)) {
 
+            for (Woods wood : woodsList) {
+                out.println("Wood" + ", " + wood.getItemType() + ", " + wood.getItemWeight() + ", " + wood.getItemSpaceOccupied() + ", " + wood.getItemValue());
+                counterWood++;
+            }
+            for (Metals metal : metalsList) {
+                out.println("Metal"  + ", " + metal.getItemType() + ", " + metal.getItemWeight() + ", " + metal.getItemSpaceOccupied() + ", " + metal.getItemValue());
+                counterMetals++;
+            }
+            out.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -73,9 +94,33 @@ public class Methods {
    ******************************************/
     public static void getArray(){
 
+        try (FileReader fr = new FileReader("History.txt");
+            BufferedReader br = new BufferedReader(fr)) {
+            String line = "";
+
+
+            while ((line = br.readLine()) != null) {
+                
+                String[] parts = line.split(",\\s*");
+
+
+                if (parts[0].equals("Wood")) {
+                    
+                    woodsList.add(new Woods(parts[1], Float.parseFloat(parts[2]), Float.parseFloat(parts[3]), Float.parseFloat(parts[4])));
+                    
+
+                } else if (parts[0].equals("Metal")) {
+                   
+                    metalsList.add(new Metals(parts[1], Float.parseFloat(parts[2]), Float.parseFloat(parts[3]), Float.parseFloat(parts[4])));
+                    
+                }
+            }
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
-
 
 
 
@@ -480,8 +525,17 @@ public class Methods {
         // Set the size of the JFrame to 500 x 400 pixels
         frame.setSize(500, 400);
         // Specify that the JFrame should close when the close button is pressed
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
+        frame.addWindowListener(new WindowAdapter()
+            {
+                @Override
+                public void windowClosing(WindowEvent e) {
+                    Methods.Save();
+                    frame.dispose();
+                    System.exit(0);
+                }
+            });
         // Create a JTabbedPane to hold multiple tabs
         JTabbedPane tabbedPane = new JTabbedPane();
 
@@ -500,6 +554,11 @@ public class Methods {
         // Create a JTable with the model
         JTable table = new JTable(model);
 
+        for (int i = 0; i < woodsList.size(); i++) 
+        {
+            model.addRow(new Object[] {model.getRowCount() + 1, "Wood " + (model.getRowCount() + 1), woodsList.get(i).getItemType(), woodsList.get(i).getItemWeight(), woodsList.get(i).getItemSpaceOccupied(), woodsList.get(i).getItemValue()});
+        }
+        
         // Wrap the JTable in a JScrollPane to allow scrolling
         JScrollPane scrollPane = new JScrollPane(table);
 
@@ -756,6 +815,11 @@ public class Methods {
         // Create a DefaultTableModel using the column names
         DefaultTableModel model2 = new DefaultTableModel(columnNames2, 0);
         JTable table2 = new JTable(model2);
+
+        for (int i = 0; i < metalsList.size(); i++) 
+        {
+            model2.addRow(new Object[] {model2.getRowCount() + 1, "Metal " + (model2.getRowCount() + 1), metalsList.get(i).getItemType(), metalsList.get(i).getItemWeight(), metalsList.get(i).getItemSpaceOccupied(), metalsList.get(i).getItemValue()});
+        }
         JScrollPane scrollPane2 = new JScrollPane(table2);
         panel2.add(scrollPane2, BorderLayout.CENTER);
 
@@ -926,11 +990,13 @@ public class Methods {
 
         frame.add(tabbedPane, BorderLayout.CENTER);
         frame.setVisible(true);
-
+        
     }
 
 
 
+
+    
 }
         
 

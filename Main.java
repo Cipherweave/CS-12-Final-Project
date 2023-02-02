@@ -36,7 +36,10 @@ class Main {
   public static void main(String[] args) {
 
 
+    Methods.getArray();
     Methods.PAGE();
+
+    
     // Initialize the Scanner class for taking user inputs
     Scanner scanner = new Scanner(System.in);
     // Initialize an empty string for storing the item
@@ -44,10 +47,10 @@ class Main {
     // Initialize a counter for storing the number of items
     int counterWood = 1;
 
+   
 
     // Start an infinite loop
     while (true){
-
 
       // Start another infinite loop
       while (true){
@@ -71,18 +74,17 @@ class Main {
         } else {
           // If the user entered an invalid command, print an error message
           System.out.println("Wrong command");
-        }
-        
+        } 
       }
-
-
-
-    } 
+    
+    }
     
 
+
+
+
+
   }
-
-
 }
 
 
