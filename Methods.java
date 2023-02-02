@@ -25,6 +25,7 @@ import java.io.PrintWriter;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.util.Arrays;
 import java.awt.event.WindowAdapter;
@@ -63,22 +64,34 @@ public class Methods {
    * /*Method Description: Saves the two array list related to Woods and Metals
    * /*Method Inputs/Outputs: input: Array List Woods and Metals
    * output: update the Hostory File
+     * @throws IOException
    ******************************************/
-    public static void Save() {
-        try (FileWriter fw = new FileWriter("History.txt", false);
+    public static void Save() throws IOException {
+        try (
+
+            // Create a FileWriter object with file name "History.txt" and set append mode to false
+            FileWriter fw = new FileWriter("History.txt", false);
+
+            // Create a FileWriter object with file name "History.txt" and set append mode to false
             BufferedWriter bw = new BufferedWriter(fw);
+            
+            // Wrap the BufferedWriter object with PrintWriter to enable print operations
             PrintWriter out = new PrintWriter(bw)) {
 
+            // Loop through the woodsList and write details of each Wood object
             for (Woods wood : woodsList) {
                 out.println("Wood" + ", " + wood.getItemType() + ", " + wood.getItemWeight() + ", " + wood.getItemSpaceOccupied() + ", " + wood.getItemValue());
-                counterWood++;
+    
             }
+            // Loop through the metalsList and write details of each Metal object
             for (Metals metal : metalsList) {
                 out.println("Metal"  + ", " + metal.getItemType() + ", " + metal.getItemWeight() + ", " + metal.getItemSpaceOccupied() + ", " + metal.getItemValue());
-                counterMetals++;
+        
             }
+            // Flush the output buffer
             out.flush();
-        } catch (IOException e) {
+        } catch (FileNotFoundException e) {
+            // Print the stack trace of the exception if it occurs
             e.printStackTrace();
         }
     }
@@ -91,8 +104,10 @@ public class Methods {
    * /*Method Description: Fill up the array lists from the History file 
    * /*Method Inputs/Outputs: input: Array List Woods and Metals
    * output: update the The array lists with the data in History file.
+     * @throws IOException
+     * @throws NumberFormatException
    ******************************************/
-    public static void getArray(){
+    public static void getArray() throws NumberFormatException, IOException{
 
         try (FileReader fr = new FileReader("History.txt");
             BufferedReader br = new BufferedReader(fr)) {
@@ -117,7 +132,7 @@ public class Methods {
             }
 
 
-        } catch (IOException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
@@ -531,7 +546,12 @@ public class Methods {
             {
                 @Override
                 public void windowClosing(WindowEvent e) {
-                    Methods.Save();
+                    try {
+                        Methods.Save();
+                    } catch (IOException e1) {
+                        // TODO Auto-generated catch block
+                        e1.printStackTrace();
+                    }
                     frame.dispose();
                     System.exit(0);
                 }

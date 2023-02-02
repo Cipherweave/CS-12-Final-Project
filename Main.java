@@ -12,6 +12,7 @@ output: A list of all Items added by User printed on screen.
 
 // Import the Scanner class for taking user inputs
 import java.util.Scanner;
+import java.io.IOException;
 // Import the ArrayList class for storing the items
 import java.util.ArrayList;
 
@@ -32,8 +33,10 @@ class Main {
  
    * /*Method Inputs/Outputs: input: User inputs
    * output: List of all Items with their characteristics and the question of what use want to do
+     * @throws IOException
+     * @throws NumberFormatException
    ******************************************/
-  public static void main(String[] args) {
+  public static void main(String[] args) throws NumberFormatException, IOException {
 
 
     Methods.getArray();
