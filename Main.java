@@ -1,11 +1,11 @@
 /*****************************************
-/*Program Name: GUI Assesment
+/*Program Name: Grade 12 Cs Final Project 
 /*Programmer Name: Ali Karimi
 /*Program Date: 2/1/2023
-/*Program Description: This program works as a storage and use can add diferrent types of woods to it with their characteristics such as weight, value, space. 
+/*Program Description: This program works as a storage and use can add diferrent types of woods and Metals to it with their characteristics such as weight, value, space. 
 The user also can sort them based on their critarias. But this time, its on GUI
 input: User commands
-output: A list of all Items added by User printed on screen.
+output: A list of all Items woods and metals added by User printed on screen as GUI and Bottoms for commands.
 
 ******************************************/
 
