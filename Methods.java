@@ -109,23 +109,30 @@ public class Methods {
    ******************************************/
     public static void getArray() throws NumberFormatException, IOException{
 
+        // Create a FileReader object with the file name "History.txt"
         try (FileReader fr = new FileReader("History.txt");
+            // Wrap the FileReader object with a BufferedReader to improve performance
             BufferedReader br = new BufferedReader(fr)) {
+
+            // Read each line of the file
             String line = "";
 
 
             while ((line = br.readLine()) != null) {
                 
+                // Split the line by comma separators
                 String[] parts = line.split(",\\s*");
 
-
+                // Check if the line starts with "Wood"
                 if (parts[0].equals("Wood")) {
                     
+                    // Add a new Wood object to the woodsList using the details from the file
                     woodsList.add(new Woods(parts[1], Float.parseFloat(parts[2]), Float.parseFloat(parts[3]), Float.parseFloat(parts[4])));
                     
-
+                // Check if the line starts with "Metal"
                 } else if (parts[0].equals("Metal")) {
                    
+                    // Add a new Metal object to the metalsList using the details from the file
                     metalsList.add(new Metals(parts[1], Float.parseFloat(parts[2]), Float.parseFloat(parts[3]), Float.parseFloat(parts[4])));
                     
                 }
@@ -133,6 +140,7 @@ public class Methods {
 
 
         } catch (FileNotFoundException e) {
+            // Print the stack trace of the exception if the file is not found
             e.printStackTrace();
         }
     }
@@ -636,6 +644,7 @@ public class Methods {
                 addWoodConfirmButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        // Create the Variables of Woods
                         String woodType = woodTypeField.getText();
                         float woodWeight = Float.parseFloat(woodWeightField.getText());
                         float woodSpace = Float.parseFloat(woodSpaceField.getText());
@@ -821,7 +830,7 @@ public class Methods {
         ///************************************************************************
 
 
-        //Panel2 structure is exaclty like Panel1 So there was no need of commenting 
+        // Panel2 structure is exaclty like Panel1 So there was no need of commenting 
         // it all over again
 
 
