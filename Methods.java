@@ -702,183 +702,183 @@ public class Methods {
         ///************************************************************************
 
 
-        //Panel2 structure is exaclty like Panel1 So there was no need of commenting 
-        // it all over again
+        // //Panel2 structure is exaclty like Panel1 So there was no need of commenting 
+        // // it all over again
 
 
-        // Create a JPanel for the Metals tab
-        JPanel panel2 = new JPanel();
-        panel2.setLayout(new BorderLayout());
+        // // Create a JPanel for the Metals tab
+        // JPanel panel2 = new JPanel();
+        // panel2.setLayout(new BorderLayout());
 
-        // Create the column names for the table in the Metals tab
-        String[] columnNames2 = {"List", "Metal Number Code", "Metal Type", "Metal Weight (Kg)", "Metal Space (M^2)", " Metal Value ($/Kg)"};
+        // // Create the column names for the table in the Metals tab
+        // String[] columnNames2 = {"List", "Metal Number Code", "Metal Type", "Metal Weight (Kg)", "Metal Space (M^2)", " Metal Value ($/Kg)"};
         
-        // Create a DefaultTableModel using the column names
-        DefaultTableModel model2 = new DefaultTableModel(columnNames2, 0);
-        JTable table2 = new JTable(model2);
-        JScrollPane scrollPane2 = new JScrollPane(table2);
-        panel2.add(scrollPane2, BorderLayout.CENTER);
+        // // Create a DefaultTableModel using the column names
+        // DefaultTableModel model2 = new DefaultTableModel(columnNames2, 0);
+        // JTable table2 = new JTable(model2);
+        // JScrollPane scrollPane2 = new JScrollPane(table2);
+        // panel2.add(scrollPane2, BorderLayout.CENTER);
 
-        JPanel buttons2 = new JPanel();
-        buttons2.setLayout(new GridLayout(1, 5));
-        JButton addMetalButton = new JButton("Add Metal");
-        addMetalButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JDialog addMetalDialog = new JDialog(frame, "Add Metal", true);
-                addMetalDialog.setLayout(new GridLayout(5, 2));
-                addMetalDialog.add(new JLabel("Metal Type:"));
-                JTextField metalTypeField = new JTextField();
-                addMetalDialog.add(metalTypeField);
-                addMetalDialog.add(new JLabel("Metal Weight (Kg):"));
-                JTextField metalWeightField = new JTextField();
-                addMetalDialog.add(metalWeightField);
-                addMetalDialog.add(new JLabel("Metal Space (M^2):"));
-                JTextField metalSpaceField = new JTextField();
-                addMetalDialog.add(metalSpaceField);
-                addMetalDialog.add(new JLabel("Metal Value ($/Kg):"));
-                JTextField metalValueField = new JTextField();
-                addMetalDialog.add(metalValueField);
-                JButton addMetalConfirmButton = new JButton("Add");
-                addMetalConfirmButton.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        String metalType = metalTypeField.getText();
-                        float metalWeight = Float.parseFloat(metalWeightField.getText());
-                        float metalSpace = Float.parseFloat(metalSpaceField.getText());
-                        float metalValue = Float.parseFloat(metalValueField.getText());
-                        // Create new Metal object with inputs
-                        Metals newMetal = new Metals(metalType, metalWeight, metalSpace, metalValue);
-                        // Set name of the Metal object
-                        newMetal.setName("Metal " + counterMetals);
-                        // Add Metal object to the list
-                        metalsList.add(newMetal);
-                        // Increment counter for Metal
-                        counterMetals++;
-                        model2.addRow(new Object[] {model2.getRowCount() + 1, "Metal " + (model2.getRowCount() + 1), metalType, metalWeight, metalSpace, metalValue});
-                        addMetalDialog.dispose();
-                    }
-                });
-                addMetalDialog.add(addMetalConfirmButton);
-                addMetalDialog.pack();
-                addMetalDialog.setVisible(true);
-            }
-
-
-
-        });
-        buttons2.add(addMetalButton);
-        panel2.add(buttons2, BorderLayout.SOUTH);
-        tabbedPane.addTab("Metals", panel2);
-
-        //-----------------------------------------------------------------
-
-        JButton removeMetalButton = new JButton("Remove Metal");
-        removeMetalButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int selectedRow = table2.getSelectedRow();
-                if (selectedRow != -1) {
-                    Metals metalToRemove = metalsList.get(selectedRow);
-                    metalsList.remove(metalToRemove);
-                    model2.removeRow(selectedRow);
-                } else {
-                    JOptionPane.showMessageDialog(frame, "Please select a row to remove.");
-                }
-            }
-        });
-        buttons2.add(removeMetalButton);
+        // JPanel buttons2 = new JPanel();
+        // buttons2.setLayout(new GridLayout(1, 5));
+        // JButton addMetalButton = new JButton("Add Metal");
+        // addMetalButton.addActionListener(new ActionListener() {
+        //     @Override
+        //     public void actionPerformed(ActionEvent e) {
+        //         JDialog addMetalDialog = new JDialog(frame, "Add Metal", true);
+        //         addMetalDialog.setLayout(new GridLayout(5, 2));
+        //         addMetalDialog.add(new JLabel("Metal Type:"));
+        //         JTextField metalTypeField = new JTextField();
+        //         addMetalDialog.add(metalTypeField);
+        //         addMetalDialog.add(new JLabel("Metal Weight (Kg):"));
+        //         JTextField metalWeightField = new JTextField();
+        //         addMetalDialog.add(metalWeightField);
+        //         addMetalDialog.add(new JLabel("Metal Space (M^2):"));
+        //         JTextField metalSpaceField = new JTextField();
+        //         addMetalDialog.add(metalSpaceField);
+        //         addMetalDialog.add(new JLabel("Metal Value ($/Kg):"));
+        //         JTextField metalValueField = new JTextField();
+        //         addMetalDialog.add(metalValueField);
+        //         JButton addMetalConfirmButton = new JButton("Add");
+        //         addMetalConfirmButton.addActionListener(new ActionListener() {
+        //             @Override
+        //             public void actionPerformed(ActionEvent e) {
+        //                 String metalType = metalTypeField.getText();
+        //                 float metalWeight = Float.parseFloat(metalWeightField.getText());
+        //                 float metalSpace = Float.parseFloat(metalSpaceField.getText());
+        //                 float metalValue = Float.parseFloat(metalValueField.getText());
+        //                 // Create new Metal object with inputs
+        //                 Metals newMetal = new Metals(metalType, metalWeight, metalSpace, metalValue);
+        //                 // Set name of the Metal object
+        //                 newMetal.setName("Metal " + counterMetals);
+        //                 // Add Metal object to the list
+        //                 metalsList.add(newMetal);
+        //                 // Increment counter for Metal
+        //                 counterMetals++;
+        //                 model2.addRow(new Object[] {model2.getRowCount() + 1, "Metal " + (model2.getRowCount() + 1), metalType, metalWeight, metalSpace, metalValue});
+        //                 addMetalDialog.dispose();
+        //             }
+        //         });
+        //         addMetalDialog.add(addMetalConfirmButton);
+        //         addMetalDialog.pack();
+        //         addMetalDialog.setVisible(true);
+        //     }
 
 
-        //-----------------------------------------------------------------
 
-        JButton sortMetalButton = new JButton("Sort By ");
-        sortMetalButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JPanel panel5 = new JPanel();
-                panel5.setLayout(new BorderLayout());
+        // });
+        // buttons2.add(addMetalButton);
+        // panel2.add(buttons2, BorderLayout.SOUTH);
+        // tabbedPane.addTab("Metals", panel2);
+
+        // //-----------------------------------------------------------------
+
+        // JButton removeMetalButton = new JButton("Remove Metal");
+        // removeMetalButton.addActionListener(new ActionListener() {
+        //     @Override
+        //     public void actionPerformed(ActionEvent e) {
+        //         int selectedRow = table2.getSelectedRow();
+        //         if (selectedRow != -1) {
+        //             Metals metalToRemove = metalsList.get(selectedRow);
+        //             metalsList.remove(metalToRemove);
+        //             model2.removeRow(selectedRow);
+        //         } else {
+        //             JOptionPane.showMessageDialog(frame, "Please select a row to remove.");
+        //         }
+        //     }
+        // });
+        // buttons2.add(removeMetalButton);
+
+
+        // //-----------------------------------------------------------------
+
+        // JButton sortMetalButton = new JButton("Sort By ");
+        // sortMetalButton.addActionListener(new ActionListener() {
+        //     @Override
+        //     public void actionPerformed(ActionEvent e) {
+        //         JPanel panel5 = new JPanel();
+        //         panel5.setLayout(new BorderLayout());
                 
-                JPanel sortOptions2 = new JPanel();
-                sortOptions2.setLayout(new GridLayout(1, 3));
-                JButton sortByWeightButton = new JButton("Weight");
-                sortByWeightButton.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        // Sort the metalsList by weight
-                        metalsList.sort(new Comparator<Metals>() {
-                            @Override
-                            public int compare(Metals w1, Metals w2) {
-                                return Float.compare(w1.getItemWeight(), w2.getItemWeight());
-                            }
-                        });
-                        // Update the table to reflect the sorted order
-                        for (int i = 0; i < model2.getRowCount(); i++) {
-                            model2.setValueAt(metalsList.get(i).getName(), i, 1);
-                            model2.setValueAt(metalsList.get(i).getItemType(), i, 2);
-                            model2.setValueAt(metalsList.get(i).getItemWeight(), i, 3);
-                            model2.setValueAt(metalsList.get(i).getItemSpaceOccupied(), i, 4);
-                            model2.setValueAt(metalsList.get(i).getItemValue(), i, 5);
-                        }
-                    }
-                });
-                sortOptions2.add(sortByWeightButton);
-                JButton sortBySpaceButton = new JButton("Space Occupied");
-                sortBySpaceButton.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        // Sort the metalsList by space occupied
-                        metalsList.sort(new Comparator<Metals>() {
-                            @Override
-                            public int compare(Metals w1, Metals w2) {
-                                return Float.compare(w1.getItemSpaceOccupied(), w2.getItemSpaceOccupied());
-                            }
-                        });
-                        // Update the table to reflect the sorted order
-                        for (int i = 0; i < model2.getRowCount(); i++) {
-                            model2.setValueAt(metalsList.get(i).getName(), i, 1);
-                            model2.setValueAt(metalsList.get(i).getItemType(), i, 2);
-                            model2.setValueAt(metalsList.get(i).getItemWeight(), i, 3);
-                            model2.setValueAt(metalsList.get(i).getItemSpaceOccupied(), i, 4);
-                            model2.setValueAt(metalsList.get(i).getItemValue(), i, 5);
-                        }
-                    }
-                });
-                sortOptions2.add(sortBySpaceButton);
-                JButton sortByValueButton = new JButton("Value");
-                sortByValueButton.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        // Sort the metalsList by value
-                        metalsList.sort(new Comparator<Metals>() {
-                            @Override
-                            public int compare(Metals w1, Metals w2) {
-                                return Float.compare(w1.getItemValue(), w2.getItemValue());
-                            }
-                        });
-                        // Update the table to reflect the sorted order
-                        for (int i = 0; i < model2.getRowCount(); i++) {
-                            model2.setValueAt(metalsList.get(i).getName(), i, 1);
-                            model2.setValueAt(metalsList.get(i).getItemType(), i, 2);
-                            model2.setValueAt(metalsList.get(i).getItemWeight(), i, 3);
-                            model2.setValueAt(metalsList.get(i).getItemSpaceOccupied(), i, 4);
-                            model2.setValueAt(metalsList.get(i).getItemValue(), i, 5);
-                        }
-                    }
-                });
-                sortOptions2.add(sortByValueButton);
-                panel5.add(sortOptions2, BorderLayout.CENTER);
-                JFrame sortFrame = new JFrame("Sort By");
-                sortFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                sortFrame.setSize(400, 100);
-                sortFrame.setLocationRelativeTo(null);
-                sortFrame.setResizable(false);
-                sortFrame.add(panel5);
-                sortFrame.setVisible(true);
+        //         JPanel sortOptions2 = new JPanel();
+        //         sortOptions2.setLayout(new GridLayout(1, 3));
+        //         JButton sortByWeightButton = new JButton("Weight");
+        //         sortByWeightButton.addActionListener(new ActionListener() {
+        //             @Override
+        //             public void actionPerformed(ActionEvent e) {
+        //                 // Sort the metalsList by weight
+        //                 metalsList.sort(new Comparator<Metals>() {
+        //                     @Override
+        //                     public int compare(Metals w1, Metals w2) {
+        //                         return Float.compare(w1.getItemWeight(), w2.getItemWeight());
+        //                     }
+        //                 });
+        //                 // Update the table to reflect the sorted order
+        //                 for (int i = 0; i < model2.getRowCount(); i++) {
+        //                     model2.setValueAt(metalsList.get(i).getName(), i, 1);
+        //                     model2.setValueAt(metalsList.get(i).getItemType(), i, 2);
+        //                     model2.setValueAt(metalsList.get(i).getItemWeight(), i, 3);
+        //                     model2.setValueAt(metalsList.get(i).getItemSpaceOccupied(), i, 4);
+        //                     model2.setValueAt(metalsList.get(i).getItemValue(), i, 5);
+        //                 }
+        //             }
+        //         });
+        //         sortOptions2.add(sortByWeightButton);
+        //         JButton sortBySpaceButton = new JButton("Space Occupied");
+        //         sortBySpaceButton.addActionListener(new ActionListener() {
+        //             @Override
+        //             public void actionPerformed(ActionEvent e) {
+        //                 // Sort the metalsList by space occupied
+        //                 metalsList.sort(new Comparator<Metals>() {
+        //                     @Override
+        //                     public int compare(Metals w1, Metals w2) {
+        //                         return Float.compare(w1.getItemSpaceOccupied(), w2.getItemSpaceOccupied());
+        //                     }
+        //                 });
+        //                 // Update the table to reflect the sorted order
+        //                 for (int i = 0; i < model2.getRowCount(); i++) {
+        //                     model2.setValueAt(metalsList.get(i).getName(), i, 1);
+        //                     model2.setValueAt(metalsList.get(i).getItemType(), i, 2);
+        //                     model2.setValueAt(metalsList.get(i).getItemWeight(), i, 3);
+        //                     model2.setValueAt(metalsList.get(i).getItemSpaceOccupied(), i, 4);
+        //                     model2.setValueAt(metalsList.get(i).getItemValue(), i, 5);
+        //                 }
+        //             }
+        //         });
+        //         sortOptions2.add(sortBySpaceButton);
+        //         JButton sortByValueButton = new JButton("Value");
+        //         sortByValueButton.addActionListener(new ActionListener() {
+        //             @Override
+        //             public void actionPerformed(ActionEvent e) {
+        //                 // Sort the metalsList by value
+        //                 metalsList.sort(new Comparator<Metals>() {
+        //                     @Override
+        //                     public int compare(Metals w1, Metals w2) {
+        //                         return Float.compare(w1.getItemValue(), w2.getItemValue());
+        //                     }
+        //                 });
+        //                 // Update the table to reflect the sorted order
+        //                 for (int i = 0; i < model2.getRowCount(); i++) {
+        //                     model2.setValueAt(metalsList.get(i).getName(), i, 1);
+        //                     model2.setValueAt(metalsList.get(i).getItemType(), i, 2);
+        //                     model2.setValueAt(metalsList.get(i).getItemWeight(), i, 3);
+        //                     model2.setValueAt(metalsList.get(i).getItemSpaceOccupied(), i, 4);
+        //                     model2.setValueAt(metalsList.get(i).getItemValue(), i, 5);
+        //                 }
+        //             }
+        //         });
+        //         sortOptions2.add(sortByValueButton);
+        //         panel5.add(sortOptions2, BorderLayout.CENTER);
+        //         JFrame sortFrame = new JFrame("Sort By");
+        //         sortFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        //         sortFrame.setSize(400, 100);
+        //         sortFrame.setLocationRelativeTo(null);
+        //         sortFrame.setResizable(false);
+        //         sortFrame.add(panel5);
+        //         sortFrame.setVisible(true);
        
-            }
-        });
-        buttons2.add(sortMetalButton);
+        //     }
+        // });
+        // buttons2.add(sortMetalButton);
 
 
 
