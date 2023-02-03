@@ -574,7 +574,7 @@ public class Methods {
         panel1.setLayout(new BorderLayout());
 
         // Define the column names for the table
-        String[] columnNames = {"List", "Wood Number Code", "Wood Type", "Wood Weight (Kg)", "Wood Space (M^2)", "Wood Value ($/Kg)"};
+        String[] columnNames = {"List", "Item", "Wood Type", "Wood Weight (Kg)", "Wood Space (M^2)", "Wood Value ($/Kg)"};
         
         // Create a DefaultTableModel with the column names
         DefaultTableModel model = new DefaultTableModel(columnNames, 0);
@@ -731,7 +731,7 @@ public class Methods {
                         });
                         // Update the table by setting the values in the table to the values in the sorted woodsList
                         for (int i = 0; i < model.getRowCount(); i++) {
-                            model.setValueAt(woodsList.get(i).getName(), i, 1);
+                            model.setValueAt("Wood", i, 1);
                             model.setValueAt(woodsList.get(i).getItemType(), i, 2);
                             model.setValueAt(woodsList.get(i).getItemWeight(), i, 3);
                             model.setValueAt(woodsList.get(i).getItemSpaceOccupied(), i, 4);
@@ -759,7 +759,7 @@ public class Methods {
                         });
                         // Update the table to reflect the sorted order
                         for (int i = 0; i < model.getRowCount(); i++) {
-                            model.setValueAt(woodsList.get(i).getName(), i, 1);
+                            model.setValueAt("Wood", i, 1);
                             model.setValueAt(woodsList.get(i).getItemType(), i, 2);
                             model.setValueAt(woodsList.get(i).getItemWeight(), i, 3);
                             model.setValueAt(woodsList.get(i).getItemSpaceOccupied(), i, 4);
@@ -781,7 +781,7 @@ public class Methods {
                         });
                         // Update the table to reflect the sorted order
                         for (int i = 0; i < model.getRowCount(); i++) {
-                            model.setValueAt(woodsList.get(i).getName(), i, 1);
+                            model.setValueAt("Wood", i, 1);
                             model.setValueAt(woodsList.get(i).getItemType(), i, 2);
                             model.setValueAt(woodsList.get(i).getItemWeight(), i, 3);
                             model.setValueAt(woodsList.get(i).getItemSpaceOccupied(), i, 4);
@@ -839,7 +839,7 @@ public class Methods {
         panel2.setLayout(new BorderLayout());
 
         // Create the column names for the table in the Metals tab
-        String[] columnNames2 = {"List", "Metal Number Code", "Metal Type", "Metal Weight (Kg)", "Metal Space (M^2)", " Metal Value ($/Kg)"};
+        String[] columnNames2 = {"List", "Item", "Metal Type", "Metal Weight (Kg)", "Metal Space (M^2)", " Metal Value ($/Kg)"};
         
         // Create a DefaultTableModel using the column names
         DefaultTableModel model2 = new DefaultTableModel(columnNames2, 0);
@@ -947,7 +947,7 @@ public class Methods {
                         });
                         // Update the table to reflect the sorted order
                         for (int i = 0; i < model2.getRowCount(); i++) {
-                            model2.setValueAt(metalsList.get(i).getName(), i, 1);
+                            model2.setValueAt("Wood", i, 1);
                             model2.setValueAt(metalsList.get(i).getItemType(), i, 2);
                             model2.setValueAt(metalsList.get(i).getItemWeight(), i, 3);
                             model2.setValueAt(metalsList.get(i).getItemSpaceOccupied(), i, 4);
@@ -969,7 +969,7 @@ public class Methods {
                         });
                         // Update the table to reflect the sorted order
                         for (int i = 0; i < model2.getRowCount(); i++) {
-                            model2.setValueAt(metalsList.get(i).getName(), i, 1);
+                            model2.setValueAt("Wood", i, 1);
                             model2.setValueAt(metalsList.get(i).getItemType(), i, 2);
                             model2.setValueAt(metalsList.get(i).getItemWeight(), i, 3);
                             model2.setValueAt(metalsList.get(i).getItemSpaceOccupied(), i, 4);
@@ -991,7 +991,7 @@ public class Methods {
                         });
                         // Update the table to reflect the sorted order
                         for (int i = 0; i < model2.getRowCount(); i++) {
-                            model2.setValueAt(metalsList.get(i).getName(), i, 1);
+                            model2.setValueAt("Wood", i, 1);
                             model2.setValueAt(metalsList.get(i).getItemType(), i, 2);
                             model2.setValueAt(metalsList.get(i).getItemWeight(), i, 3);
                             model2.setValueAt(metalsList.get(i).getItemSpaceOccupied(), i, 4);
