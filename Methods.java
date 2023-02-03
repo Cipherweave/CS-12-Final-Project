@@ -584,7 +584,7 @@ public class Methods {
 
         for (int i = 0; i < woodsList.size(); i++) 
         {
-            model.addRow(new Object[] {model.getRowCount() + 1, "Wood " + (model.getRowCount() + 1), woodsList.get(i).getItemType(), woodsList.get(i).getItemWeight(), woodsList.get(i).getItemSpaceOccupied(), woodsList.get(i).getItemValue()});
+            model.addRow(new Object[] {model.getRowCount() + 1, "Wood ", woodsList.get(i).getItemType(), woodsList.get(i).getItemWeight(), woodsList.get(i).getItemSpaceOccupied(), woodsList.get(i).getItemValue()});
         }
         
         // Wrap the JTable in a JScrollPane to allow scrolling
@@ -657,7 +657,7 @@ public class Methods {
                         woodsList.add(newWood);
                         // Increment counter for Wood
                         counterWood++;
-                        model.addRow(new Object[] {model.getRowCount() + 1, "Wood " + (model.getRowCount() + 1), woodType, woodWeight, woodSpace, woodValue});
+                        model.addRow(new Object[] {model.getRowCount() + 1, "Wood ", woodType, woodWeight, woodSpace, woodValue});
                         addWoodDialog.dispose();
                     }
                 });
@@ -847,7 +847,7 @@ public class Methods {
 
         for (int i = 0; i < metalsList.size(); i++) 
         {
-            model2.addRow(new Object[] {model2.getRowCount() + 1, "Metal " + (model2.getRowCount() + 1), metalsList.get(i).getItemType(), metalsList.get(i).getItemWeight(), metalsList.get(i).getItemSpaceOccupied(), metalsList.get(i).getItemValue()});
+            model2.addRow(new Object[] {model2.getRowCount() + 1, "Metal ", metalsList.get(i).getItemType(), metalsList.get(i).getItemWeight(), metalsList.get(i).getItemSpaceOccupied(), metalsList.get(i).getItemValue()});
         }
         JScrollPane scrollPane2 = new JScrollPane(table2);
         panel2.add(scrollPane2, BorderLayout.CENTER);
@@ -888,7 +888,7 @@ public class Methods {
                         metalsList.add(newMetal);
                         // Increment counter for Metal
                         counterMetals++;
-                        model2.addRow(new Object[] {model2.getRowCount() + 1, "Metal " + (model2.getRowCount() + 1), metalType, metalWeight, metalSpace, metalValue});
+                        model2.addRow(new Object[] {model2.getRowCount() + 1, "Metal ", metalType, metalWeight, metalSpace, metalValue});
                         addMetalDialog.dispose();
                     }
                 });
